@@ -1,0 +1,6 @@
+framework module Pods_PC_maps {
+  umbrella header "Pods-PC maps-umbrella.h"
+
+  export *
+  module * { export * }
+}
