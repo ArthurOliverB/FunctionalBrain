@@ -2,6 +2,8 @@
 
 # Indice
 
+
+
 - [Cidadão de Primeira Linha](#cidadão-de-primeira-linha)
 - [Parâmetro e Retorno São Opcionais](#parâmetro-e-retorno-são-opcionais)
 - [Parâmetros Variáveis](#parâmetros-variáveis)
@@ -21,24 +23,25 @@
 
 1. Qual a diferença entre usar função literal e armazenar ela em uma variável?
 
-    Essa capacidade do JavaScript de armazenar funções dentro de 
+	Essa capacidade do JavaScript de armazenar funções dentro de 
     variáveis vem ser útil quando temos uma função anônima - não nomeada - 
     mas queremos acessá-la.
 
     Por exemplo:
 
-    ```jsx
-    setTimeout(function(){
-    	console.log("A função executa depois de 1 segundo...")
-    }, 1000)
+    ```js
+    setTimeout(function () {
+			console.log("A função executa depois de 1 segundo...");
+		}, 1000);
+
     ```
 
     Nesse exemplo, uma função anônima foi passada para o setTimeout, e essa função anônima agora é um parâmetro do setTimeout.
 
     Ao armazenar uma função anônima dentro de uma variável, podemos chamar a função por meio dessa variável, assim:
 
-    ```jsx
-    let teste = function(){
+    ```js
+    let teste = function() {
     	console.log("Olha só, funciona!");
     }
 
@@ -57,8 +60,8 @@
 
     A função anônima abaixo, armazenada dentro da variável soma:
 
-    ```jsx
-    let soma = function(a, b){
+    ```js
+    let soma = function(a, b) {
     	return a + b;
     }
 
@@ -67,14 +70,14 @@
 
     Pode ser escrita dessa maneira, na sintaxe de função arrow:
 
-    ```jsx
+    ```js
     let soma = (a, b) =>  a + b;
     console.log(soma(2, 3));
     ```
 
     Que é, convenhamos, uma maneira bem mais curta de declarar funções, mas que também tem suas particularidades.
 
-2. O que se caracteriza como programação funcional?
+1. O que se caracteriza como programação funcional?
 
     Programação funcional é só uma **outra maneira de pensar** na hora de criar o seu programa.
 
@@ -86,29 +89,29 @@
 
     Ao contrário do que muita gente pensa, programação funcional não é o oposto de programação orientada a objetos, são diferentes, mas podem inclusive ser usados em uma mesma aplicação, principalmente em  linguagens multi-paradigmas, como o JavaScript.
 
-3. Na linha 16 do código, por que ao colocar um return console.log("Opa!") o resultado é Opa! e undefined?
+2. Na linha 16 do código, por que ao colocar um return console.log("Opa!") o resultado é Opa! e undefined?
 
     O motivo disso é porque console.log é uma função, e toda função tem um retorno. Logo, como ela não foi feita pra retornar nada específico, ela retorna undefined, que também será o retorno de obj.falar(). Como na linha 17 está mandando ser impresso no console o retorno de obj.falar(), então será impresso undefined.
 
-4. O que faz o return?
+3. O que faz o return?
 
     Quando você executa a função soma o resultado dela é outra chamada de função. É como se você executasse outra função chamando a primeira. Ou seja, quando você chamar a função soma() no seu código, ela vai chamar outra função ao invés de retornar algum valor. Esse exemplo da aula não é o melhor já que não tem muita utilidade, foi apenas para mostrar mesmo que é possível retornar uma função usando uma função
 
-5. Para que usar os parâmetros numa função?
+4. Para que usar os parâmetros numa função?
 
     Os parâmetros passados em uma função poderão ser utilizados dentro da mesma, por exemplo:
 
-    ```jsx
+    ```js
     function imprimirString (parametro) {
     	console.log(parametro);
     }
          
-    imprimirString('Essa frase tomará o lugar da variável parâmetro')
+    imprimirString('Essa frase tomará o lugar da variável parâmetro');
     ```
 
     Se você não criar a function com o parâmetro observe o que acontece:
 
-    ```jsx
+    ```js
     function imprimirString () {
     	console.log(parametro); //vc não conseguirá utilizá-lo aqui
     }
@@ -124,8 +127,8 @@
 
 Confira se foram utilizados os back-ticks, ou sinais de crase, ( ` ` ) em vez de, por exemplo, aspas simples. Dessa maneira:
 
-```jsx
-console.log(`Valor acima do permitido: ${area}m2.`)
+```js
+console.log(`Valor acima do permitido: ${area}m2.`);
 ```
 
 - Por que se eu chamar uma função sem o console.log, ela imprimiu um resultado sem o "undefined"?
@@ -140,33 +143,34 @@ Não é bug, não!
 
 O console.log só vai imprimir o que você pedir a ele; se uma função não declarada ou vazia for passada para o console.log, ele imprime o undefined porque de fato, o que você tentou imprimir não existe. Por exemplo:
 
-```jsx
-function masComoAssim(){ //função vazia!
+```js
+function masComoAssim() { //função vazia!
      
-    }
-    console.log(masComoAssim()) //imprime undefined
+}
+
+console.log(masComoAssim()) //imprime undefined
 ```
 
 O undefined significa "indefinido" ou seja, o que você está tentando imprimir não foi definido.
 
 Porém, no momento que você explicita alguma coisa dentro da função, por exemplo, com um return:
 
-```jsx
-function masComoAssim(){
-    return "Eita, funcionou!"
+```js
+function masComoAssim() {
+    return "Eita, funcionou!";
 }
  
-console.log(masComoAssim()) //imprime "Eita, funcionou!
+console.log(masComoAssim()); //imprime "Eita, funcionou!
 ```
 
 - E afinal, por que esse undefined vem junto?
 
 Uma função sem um return definido retorna um valor default. Ou seja:
 
-```jsx
+```js
 function abc (a) {
-        console.log(a);
-    }
+	console.log(a);
+}
 ```
 
 A função acima não tem return, mas mesmo assim ela retorna um valor padrão.
@@ -175,25 +179,25 @@ Para funções construtoras, aquelas que utilizamos o new, o retorno é o this d
 
 Então, analisando o código da aula, temos que:
 
-```jsx
+```js
 function area(largura, altura) {
-        const area = largura * altura
-        if (area > 20) {
-            console.log(`Valor acima do permitido: ${area}m2.`)
-        } else {
-            return area
-        }
-    }
+	const area = largura * altura;
+	if (area > 20) {
+		console.log(`Valor acima do permitido: ${area}m2.`);
+	} else {
+		return area;
+	}
+}
      
-    console.log(area(5, 5))
+	console.log(area(5, 5));
 ```
 
 O caso citado entrará no bloco if, imprimirá no console, não entrará no bloco else e encerrará a função. Como não foi executado nenhum retorno explícito, o valor padrão (undefined) é retornado.
 
 Então é por isso que ela imprime no console e depois imprime o undefined, pois a chamada da função está dentro de um console.log. Se fizéssemos assim:
 
-```jsx
-area(5, 5)
+```js
+area(5, 5);
 ```
 
 A função seria chamada fora do console.log, logo seu retorno não seria impresso, mas seu bloco if executaria o console.log interno à função.
@@ -202,17 +206,17 @@ A função seria chamada fora do console.log, logo seu retorno não seria impres
 
 Não podemos fazer o retorno de vários valores, mas podemos retornar um array contendo os valores. Dessa forma aqui:
 
-```jsx
+```js
 const teste = {
-        nome: 'Lucas',
-        idade: 22
-    }
-     
-    function testando(obj) {
-        return [obj.nome, obj.idade]
-    }
-     
-    console.log(testando(teste))
+	nome: "Lucas",
+	idade: 22,
+};
+
+function testando(obj) {
+	return [obj.nome, obj.idade];
+}
+
+console.log(testando(teste));
 ```
 
 ## Parâmetros Variáveis
@@ -225,16 +229,16 @@ Basicamente esse i é uma variável de controle que é responsável por ser iter
 
  O arguments é um array que contém todos os parâmetros que você passou para a função, ou seja, caso você chame a função da seguinte forma: função(a, b, c, d, e) o arguments dessa função vai ser:
 
-```jsx
-arguments[0] = a
+```js
+arguments[0] = a;
 
-arguments[1] = b
+arguments[1] = b;
 
-arguments[2] = c
+arguments[2] = c;
 
-arguments[3] = d
+arguments[3] = d;
 
-arguments[4] = e
+arguments[4] = e;
 ```
 
 - Não seria importante usar o TypeScript para evitar possíveis problemas com argumentos de tipos não desejados? Tem alguma forma de obrigar que outros desenvolvedores passem argumentos de tipos indesejados para nossos métodos quando o código está modularizado no próprio JavaScript sem precisar de try/catch? A tipagem dinâmica do JavaScript tem alguma utilidade?
@@ -258,26 +262,25 @@ De modo geral, esse é um dos problemas que o TypeScript observou no JavaScript 
 
 Quando você faz a assinatura de uma função, assim:
 
-```jsx
+```js
 function teste (a, b, c) {
-        return a + b + c;
-    }
+	return a + b + c;
+}
 ```
 
 Os parâmetros a, b e c só existirão dentro da função. O que for atribuído a eles poderá existir fora, mas eles não. Por exemplo:
 
-```jsx
-const numero1 = 2
-    const numero2 = 4
-     
-     
-    function teste (a, b, c) {
-        c(a, b);
-    }
-     
-    teste(numero1, numero2, (num1, num2) => {
-        console.log(num1 + num2);
-    })
+```js
+const numero1 = 2;
+const numero2 = 4;
+
+function teste(a, b, c) {
+	c(a, b);
+}
+
+teste(numero1, numero2, (num1, num2) => {
+	console.log(num1 + num2);
+});
 ```
 
 numero1 e numero2 existem fora da função e dentro dela são conhecidos como 'a' e 'b'. Já a função arrow que passamos como parâmetro na hora da chamada da função teste não existe fora da função teste e dentro dela é conhecida como 'c'.
@@ -286,15 +289,15 @@ numero1 e numero2 existem fora da função e dentro dela são conhecidos como 'a
 
 O valor 1 para a comparação foi utilizado por questão de didática mesmo, até porque não conseguiria, por exemplo, ser observado o bug do soma1(0,0,0) se o valor padrão fosse 0, enquanto que com o valor 1 pôde-se ver que mesmo se passando os três valores 0 para a comparação, ele retornava o resultado 3.
 
-```jsx
+```js
 function soma1(a, b, c) {
-    a = a || 1
-    b = b || 1
-    c = c || 1
-    return a + b + c
-    }
-    console.log(soma1(),soma1(3),soma1(1,2,3),soma1(0,0,0)) 
-    //retorna 3, 5, 6 e 3 novamente
+	a = a || 1;
+	b = b || 1;
+	c = c || 1;
+	return a + b + c;
+}
+console.log(soma1(), soma1(3), soma1(1, 2, 3), soma1(0, 0, 0));
+//retorna 3, 5, 6 e 3 novamente
 ```
 
 No mais, você pode usar quaisquer valores como padrão, mas no caso da aula foi usado o 1 mais por didática mesmo.
@@ -331,16 +334,16 @@ Já em modo estrito, o valor de this permanece seja qual for o definido ao entra
 
 As funções arrow não tem um this próprio, sendo o this definido lexicalmente, ou seja, seu valor é definido pelo contexto de execução onde está inserido.
 
-```jsx
-function Pessoa(){
-      this.idade = 0;
-     
-      setInterval(() => {
-        this.idade++; // |this| corretamente se refere ao objeto Pessoa
-      }, 1000);
-    }
-     
-    var p = new Pessoa();
+```js
+function Pessoa() {
+	this.idade = 0;
+
+	setInterval(() => {
+		this.idade++; // |this| corretamente se refere ao objeto Pessoa
+	}, 1000);
+}
+
+var p = new Pessoa();
 ```
 
 Para funções, você poderia dizer "Ó, é esta função aqui que eu tô falando!"
@@ -361,13 +364,13 @@ O escopo onde ele está inserido.
 
 No contexto de execução global (fora de qualquer função), this refere-se ao objeto global, seja em modo estrito ou não.
 
-```jsx
+```js
 console.log(this.document === document); // true
 ```
 
 Em navegadores web, o objeto window é também o objeto global:
 
-```jsx
+```js
 console.log(this === window); // true
 ```
 
@@ -397,21 +400,21 @@ Vocênão consegue usar o falar() (o que tem pessoa.falar.bind(pessoa) dentro de
 
 Nem sempre, porém, vai ser passado ao bind um objeto, você pode passar argumentos que serão atribuídos a uma determinada função. Por exemplo:
 
-```jsx
+```js
 function lista() {
-      return Array.prototype.slice.call(arguments);
-    }
-     
-    var lista1 = lista(1, 2, 3); // retorna [1, 2, 3]
-     
-    // Cria uma função com um argumento principal predefinido
-    var comecandoComTrintaESete = lista.bind(null, 37);
-     
-    var lista2 = comecandoComTrintaESete(); //sem passar parâmetros
-    // [37]
-     
-    var lista3 = comecandoComTrintaESete(1, 2, 3); //passando parâmetros
-    // [37, 1, 2, 3] - começa com o 37 e acrescenta os parâmetros passados
+	return Array.prototype.slice.call(arguments);
+}
+
+var lista1 = lista(1, 2, 3); // retorna [1, 2, 3]
+
+// Cria uma função com um argumento principal predefinido
+var comecandoComTrintaESete = lista.bind(null, 37);
+
+var lista2 = comecandoComTrintaESete(); //sem passar parâmetros
+// [37]
+
+var lista3 = comecandoComTrintaESete(1, 2, 3); //passando parâmetros
+// [37, 1, 2, 3] - começa com o 37 e acrescenta os parâmetros passados
 ```
 
 - O bind só funciona para objetos?
@@ -420,7 +423,7 @@ O bind é chamado à partir de uma função e como argumento você passa o objet
 
 Por exemplo:
 
-```jsx
+```js
 func.bind(obj);
 ```
 
@@ -430,17 +433,17 @@ O this da função func será o objeto obj.
 
 Em JavaScript o this pode variar de acordo com quem o chama, observe:
 
-```jsx
+```js
 const pessoa = {
-        saudacao: 'Bom dia!',
-        falar(){
-            console.log(this);
-        }
-    }
-     
-    pessoa.falar();
-    const falar = pessoa.falar;
-    falar();
+	saudacao: "Bom dia!",
+	falar() {
+		console.log(this);
+	},
+};
+
+pessoa.falar();
+const falar = pessoa.falar;
+falar();
 ```
 
 Observe que o código acima imprime o this no console, e não o this.nome.
@@ -449,17 +452,17 @@ Atentando para isso, observamos que ao chamar direto pessoa.falar o this é de f
 
 Agora,o pulo do gato, quando atribuímos a função para uma constante no escopo global o this já não será mais o mesmo, e sim o objeto global. Ou seja, o this mudou de acordo com a chamada. Quando fazemos o bind, como na aula:
 
-```jsx
+```js
 const pessoa = {
-        saudacao: 'Bom dia!',
-        falar(){
-            console.log(this);
-        }
-    }
-     
-    pessoa.falar();
-    const falarComBind = pessoa.falar.bind(pessoa);
-    falarComBind();
+	saudacao: "Bom dia!",
+	falar() {
+		console.log(this);
+	},
+};
+
+pessoa.falar();
+const falarComBind = pessoa.falar.bind(pessoa);
+falarComBind();
 ```
 
 Observe que tanto na chamada direta (pessoa.falar) quanto na chamada com o bind (falarComBind) o this é o mesmo, porque a função bind atrela um escopo léxico à const, no caso.
@@ -472,23 +475,23 @@ O this pode variar de acordo com a chamada, então conhecer os escopos e dominar
 
 No exemplo acima está sendo criado um objeto armazenado em uma constante que você sabe o nome e chama o atributo pelo nome da constante, isso funciona! Agora imagine o seguinte cenário:
 
-```jsx
-function Pessoa (saudacao) {
-        return {
-            saudacao,
-            falar: function () {
-                console.log(this.saudacao)
-            }
-        }
-    }
-     
-    const p1 = new Pessoa("Bom dia")
-    const p2 = new Pessoa("Boa tarde")
-    const p3 = new Pessoa("Boa noite")
-     
-    p1.falar()
-    p2.falar()
-    p3.falar()
+```js
+function Pessoa(saudacao) {
+	return {
+		saudacao,
+		falar: function () {
+			console.log(this.saudacao);
+		},
+	};
+}
+
+const p1 = new Pessoa("Bom dia");
+const p2 = new Pessoa("Boa tarde");
+const p3 = new Pessoa("Boa noite");
+
+p1.falar();
+p2.falar();
+p3.falar();
 ```
 
 No cenário acima nós temos uma função construtora que nos retornará um objeto do tipo Pessoa para cada instância que criarmos.
@@ -575,21 +578,21 @@ Você pode coloca quantos parâmetros quiser, no entanto, mesmo que você use so
 
 Depende muito do problema que se está querendo resolver, por exemplo pode-se fazer uma função que só retorna uma String ou coisa do tipo, saca só:
 
-```jsx
-let texto = 'Olá Mundo!'
-    let outroTexto = 'Tchau Mundo!'
-     
-    const imprimir = () => {
-        if(texto){
-            console.log(texto)
-        }
-        
-        if(outroTexto){
-            console.log(outroTexto)
-        }
-    }
-     
-    imprimir()
+```js
+let texto = "Olá Mundo!";
+let outroTexto = "Tchau Mundo!";
+
+const imprimir = () => {
+	if (texto) {
+		console.log(texto);
+	}
+
+	if (outroTexto) {
+		console.log(outroTexto);
+	}
+};
+
+imprimir();
 ```
 
 Nesse caso estão sendo impressos os valores de texto e outroTexto, como falei depende do que se está sendo feito.
@@ -602,14 +605,14 @@ Exatamente, só podemos utilizar uma se fizermos alguma atribuição para aquela
 
 Sim, é possível usar uma notação como:
 
-```jsx
-ola => 'Olá'
+```js
+ola => 'Olá';
 ```
 
 Mas dependendo do caso, será melhor usar um param, dessa maneira:
 
-```jsx
-ola = _ => 'Olá!'
+```js
+ola = _ => 'Olá!';
 ```
 
 ## Funções Arrow #02
@@ -625,7 +628,7 @@ Para começar, você pode entender o this pela sua tradução, que é **isto**. 
 A grande jogada dele é que ele depende de **contexto**. Se declarado no contexto global, o this vai apontar para o objeto global. Isso seria, por exemplo, se você fizesse a comparação num 
 arquivo:
 
-```jsx
+```js
 console.log(this.document === document); // retorna true
 ```
 
@@ -633,20 +636,20 @@ O this é, na maioria dos casos, determinado plea forma que uma função é cham
 
 No caso de um modo não estrito ou de chamada simples, o this vai continuar apontando para o contexto global. Por exemplo:
 
-```jsx
-function f1(){ 
-      return this;
-    } 
-    // No navegador
-    f1() === window; // true
+```js
+function f1() {
+	return this;
+}
+// No navegador
+f1() === window; // true
 ```
 
 No ECMAScript2015 foram introduzidas as arrow functions, cujo this é delimitado lexicalmente (estabelecido de acordo com o escopo no qual está inserido). Por exemplo:
 
-```jsx
+```js
 var globalObject = this;
-    var foo = (() => this);
-    console.log(foo() === globalObject); //retorna true
+var foo = (() => this);
+console.log(foo() === globalObject); //retorna true
 ```
 
 O this, no caso, está se referindo ao **objeto criado pela função construtora Pessoa.**
@@ -660,31 +663,31 @@ Você usa os parênteses quando quer fazer a chamada de uma função.
 
 Por exemplo:
 
-```jsx
-function soma (a, b){
-        return a + b
-    }
-     
-    console.log(soma(2, 3)) //chamada da função passando os parâmetros 2 e 3 dentro do console.log
+```js
+function soma(a, b) {
+	return a + b;
+}
+
+console.log(soma(2, 3)); //chamada da função passando os parâmetros 2 e 3 dentro do console.log
 ```
 
 Ou, ainda:
 
-```jsx
-function soma (a, b){
-        return console.log(a + b) //o console.log já dentro da função para imprimir o valor na tela
-    }
-     
-    soma(2, 3) //chamada simples da função passando os parâmetros
+```js
+function soma(a, b) {
+	return console.log(a + b); //o console.log já dentro da função para imprimir o valor na tela
+}
+
+soma(2, 3); //chamada simples da função passando os parâmetros
 ```
 
 - Por que não tem um return na função Arrow?
 
 Quando utilizamos a forma contraída da Arrow Function estamos declarando um retorno implícito, ou seja, tem um return mas não enxergamos ele:
 
-```jsx
-const teste = () => console.log('Foi testado'); // Nessa linha depois do => existe um return escondido
-    teste()
+```js
+const teste = () => console.log("Foi testado"); // Nessa linha depois do => existe um return escondido
+teste();
 ```
 
 - O que o this referencia em funções arrow?
@@ -707,13 +710,13 @@ Onde essa função for criada, o this referente a ela vai continuar apontando pa
 
 Quanto ao this apontar para module.exports, também é questão de escopo. Por exemplo:
 
-```jsx
-function teste (){
-        return console.log(this === module.exports) //imprime false
-    }
-    teste() //chamada da função 
-     
-    console.log(this === module.exports)//imprime true
+```js
+function teste() {
+	return console.log(this === module.exports); //imprime false
+}
+
+teste(); //chamada da função
+console.log(this === module.exports); //imprime true
 ```
 
 Comparando o this dentro de uma função, retornou false, e comparando fora de uma função, no escopo global, retornou true.
@@ -729,37 +732,36 @@ Tanto o jeito tradicional quanto as Arrow functions tem suas utilidades. As fun�
 
 Existem dois tipos de escopos, escopo global (existe enquanto a aplicação roda) e escopo local (existe enquanto existe o objeto ou função). Precisamos ter em mente que escopo global é diferente de objeto global. É importante saber também que as regras do this variam quando variamos o ambiente de execução, ou seja, o this se comporta de maneira diferente no Node e no Browser. Com essas informações na mente temos que, no Node, observe:
 
-```jsx
+```js
 //Escopo global
-    console.log(this === module.exports); //true
-    this.nome = 'Daniel';
-    console.log(this); //o atributo nome foi inserido em module.exports
-    console.log(this.nome); //Daniel
-     
-    function digaMeuNome(){
-        //escopo local
-        console.log(this === global) //no escopo local de funções declaradas no escopo global o this é o objeto global
-        this.nome = 'Rafael'; //Se comentar essa linha o resultado do console será undefined
-        console.log(this.nome); //Rafael
-    }
-     
-    digaMeuNome(); 
-    console.log(global.nome); //this da função declarada no escopo global
-    console.log(module.exports.nome);//this do escopo global
-     
-     
-    const objeto = {
-        nome: 'Arthur',
-        imprimirThis: function(){
-            console.log(this)
-        },
-        digaMeuNome: function(){
-            console.log(this.nome)
-        }    
-    }
-     
-    objeto.imprimirThis();//No escopo local do objeto declarado no escopo global o this é o próprio objeto. 
-    objeto.digaMeuNome();// Arthur.
+console.log(this === module.exports); //true
+this.nome = "Daniel";
+console.log(this); //o atributo nome foi inserido em module.exports
+console.log(this.nome); //Daniel
+
+function digaMeuNome() {
+	//escopo local
+	console.log(this === global); //no escopo local de funções declaradas no escopo global o this é o objeto global
+	this.nome = "Rafael"; //Se comentar essa linha o resultado do console será undefined
+	console.log(this.nome); //Rafael
+}
+
+digaMeuNome();
+console.log(global.nome); //this da função declarada no escopo global
+console.log(module.exports.nome); //this do escopo global
+
+const objeto = {
+	nome: "Arthur",
+	imprimirThis: function () {
+		console.log(this);
+	},
+	digaMeuNome: function () {
+		console.log(this.nome);
+	},
+};
+
+objeto.imprimirThis(); //No escopo local do objeto declarado no escopo global o this é o próprio objeto.
+objeto.digaMeuNome(); // Arthur.
 ```
 
 No pequeno código acima é possível reparar que o this em javascript é variável e por isso deve ser estudado com atenção e utilizado com cuidado.
@@ -770,29 +772,29 @@ No pequeno código acima é possível reparar que o this em javascript é variá
 
 Foi feita a chamada de uma função dentro de outra função, conceito esse conhecido como função callback.
 
-```jsx
+```js
 const soma = function (x, y) {
-    return x + y
-}
+	return x + y;
+};
 
 const imprimirResultado = function (a, b, operacao = soma) {
-    console.log(operacao(a, b))
-}
+	console.log(operacao(a, b));
+};
 
-imprimirResultado(3, 4)
-imprimirResultado(3, 4, soma)
+imprimirResultado(3, 4);
+imprimirResultado(3, 4, soma);
 imprimirResultado(3, 4, function (x, y) {
-    return x - y
-})
-imprimirResultado(3, 4, (x, y) => x * y)
+	return x - y;
+});
+imprimirResultado(3, 4, (x, y) => x * y);
 
 const pessoa = {
-    falar: function () {
-        console.log('Opa')
-    }
-}
+	falar: function () {
+		console.log("Opa");
+	},
+};
 
-pessoa.falar()
+pessoa.falar();
 ```
 
 Perceba que, primeiramente, foi declarada a função soma; logo em seguida, armazenada dentro da variável imprimirResultado, uma função (anônima, mas que pode ser invocada por meio de imprimirResultado) recebendo os parâmetros a, b e um terceiro que é uma variável que chama a função soma; dentro de imprimirResultado, é feita a chamada de operacao passando os parâmetros a e b, onde a = x e b = y.
@@ -801,54 +803,63 @@ Perceba que, primeiramente, foi declarada a função soma; logo em seguida, arma
 
 Essa pratica existe para evitar que funções fiquem soltas em escopos onde não são necessárias. Por exemplo, vamos supor que você tem uma função que recebe como parâmetro duas coleções e que as duas precisam ser filtradas e manipuladas da mesma forma:
 
-```jsx
+```js
 function transformar(colecao1, colecao2) {
-        // ...
-    }
+	// ...
+}
 ```
 
 Podemos criar manipular as duas da mesma forma, repetindo o código:
 
-```jsx
+```js
 function transformar(colecao1, colecao2) {
-        const transformada1 = colecao1.map((c) => {
-            //...
-        }).filter(c => {
-            //...
-        }).reduce((total, valor) => {
-            // ...
-        })
-     
-        const transformada2 = colecao1.map((c) => {
-            //...
-        }).filter(c => {
-            //...
-        }).reduce((total, valor) => {
-            // ...
-        })
-     
-        return { transformada1, transformada2 }
-    }
+	const transformada1 = colecao1
+		.map((c) => {
+			//...
+		})
+		.filter((c) => {
+			//...
+		})
+		.reduce((total, valor) => {
+			// ...
+		});
+
+	const transformada2 = colecao1
+		.map((c) => {
+			//...
+		})
+		.filter((c) => {
+			//...
+		})
+		.reduce((total, valor) => {
+			// ...
+		});
+
+	return { transformada1, transformada2 };
+}
 ```
 
 Ou podemos fazer uma função dentro de transformar e reaproveitar o código:
 
-```jsx
+```js
 function transformar(colecao1, colecao2) {
-        const funcaoTransformadora = (colecao) => {
-            return colecao.map((c) => {
-                //...
-            }).filter(c => {
-                //...
-            }).reduce((total, valor) => {
-                // ...
-            })
-        }
-        const transformada1 = funcaoTransformadora(colecao1)
-        const transformada2 = funcaoTransformadora(colecao1)
-     
-        return { transformada1, transformada2 }
-    }
+	const funcaoTransformadora = (colecao) => {
+		return colecao
+			.map((c) => {
+				//...
+			})
+			.filter((c) => {
+				//...
+			})
+			.reduce((total, valor) => {
+				// ...
+			});
+	};
+	const transformada1 = funcaoTransformadora(colecao1);
+	const transformada2 = funcaoTransformadora(colecao1);
+
+	return { transformada1, transformada2 };
+}
 ```
 
 A questão é: "Poderiamos ter colocado a funcaoTransformadora fora da função não?"
@@ -859,12 +870,12 @@ Sim,poderíamos, só que não faz muito sentido essa função ficar solta junto 
 
 A diferença é que uma função anônima não é nomeada em sua declaração, embora possa ser atribuída a uma variável/constante e poder, posteriormente, ser referenciada. Essa característica permite que seja passada como um parâmetro de outra função. Por exemplo:
 
-```jsx
-var array = [1, 2, 3]
-     
-    array.forEach( function ( num ) {
-        console.log(num)
-    })
+```js
+var array = [1, 2, 3];
+
+array.forEach(function (num) {
+	console.log(num);
+});
 ```
 
 Perceba que essa função que foi definida foi somente para ser usada nesse foreach, não tendo um identificador que permita reutilizá-la depois.
@@ -873,10 +884,10 @@ Perceba que essa função que foi definida foi somente para ser usada nesse fore
 
 Um das utilidades de se colocar uma função dentro de uma constante é para que ela não possa sofrer overwrite. Por exemplo, se você criar a função soma normalmente com a sintaxe:
 
-```jsx
+```js
 function soma(a, b) {
-        return a + b
-    }
+	return a + b
+}
 ```
 
 Caso você mais a baixo no código faça função com o mesmo nome, a primeira função soma vai ser substituída pela segunda que você criou. E graças a propriedade do JavaScript chamada de hoisting, onde funções e variáveis são puxadas para cima na hora da execução, caso você crie a 
@@ -898,19 +909,19 @@ Em cada iteração de forEach, ele chamará essa função que é seu parâmetro 
 
 O primeiro parâmetro, independente de como for chamado, receberá o valor guardado na posição recuperada por forEach na iteração, o segundo receberá o seu índice e o terceiro (que na aula não foi utilizado) receberá o array inteiro. O código poderia ser como abaixo e funcionaria normalmente:
 
-```jsx
-const arrayExemplo = ["Banana", "Maçã", "Laranja"]
-     
-    function fnExemplo(recebeValor, recebeIndice) {
-      console.log(`Índice ${recebeIndice}. Valor: ${recebeValor}`)
-    }
-     
-    arrayExemplo.forEach(fnExemplo)
+```js
+const arrayExemplo = ["Banana", "Maçã", "Laranja"];
+
+function fnExemplo(recebeValor, recebeIndice) {
+	console.log(`Índice ${recebeIndice}. Valor: ${recebeValor}`);
+}
+
+arrayExemplo.forEach(fnExemplo);
 ```
 
 A função forEach vai, executa seu trabalho, e, na volta, chama a função fnExemplo. Por isso o nome callback. Terminado todo o processo, após as 3 iterações sobre a lista, terão sido exibidos os seguintes dados no console:
 
-```jsx
+```js
 Índice: 0. Valor: Banana
 Índice: 1. Valor: Maçã
 Índice: 2. Valor: Laranja
@@ -930,11 +941,12 @@ Uma função callback é uma função que é passada a outra como parâmetro.
 
 Vejam que, no exemplo da aula:
 
-```jsx
+```js
 const notasBaixas2 = notas.filter(function (nota) {
-    return nota < 7
-    })
-    console.log(notasBaixas2)
+	return nota < 7;
+});
+
+console.log(notasBaixas2);
 ```
 
 A const notasBaixas2 recebeu o método filter em cima do Array **notas** (notas.filter()). O filter() é um método que vai, por padrão, receber uma **função como parâmetro** e filtrar um Array de acordo com o que foi estabelecido nessa função passada a ele.
@@ -947,17 +959,18 @@ As callbacks podem ser tanto síncronas, quando executadas imediatamente, quanto
 
 O for recebe três expressões, de inicialização, condição e a expressão final, seguidas de uma declaração, que será o código a ser executado pelas vezes determinadas pelas expressões.
 
-```jsx
+```js
 for (var i = 0; i < 9; i++) {
-       console.log(i);
-    }
+	console.log(i);
+}
 ```
 
 O for...in interage sobre propriedades enumeradas de um objeto, na ordem original de inserção.
 
-```jsx
-for (variavel in objeto) {...
-    }
+```js
+for (variavel in objeto) {
+	//...
+}
 ```
 
 Onde essa **variavel** é uma propriedade diferente do objeto que é atribuída a cada iteração, e **objeto** é o Objeto com as propriedades enumeradas.
