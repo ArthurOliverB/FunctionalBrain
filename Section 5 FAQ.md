@@ -30,9 +30,9 @@
     Por exemplo:
 
     ```js
-    setTimeout(function () {
-			console.log("A função executa depois de 1 segundo...");
-		}, 1000);
+	setTimeout(function () {
+		console.log("A função executa depois de 1 segundo...");
+	}, 1000);
 
     ```
 
@@ -148,7 +148,7 @@ function masComoAssim() { //função vazia!
      
 }
 
-console.log(masComoAssim()) //imprime undefined
+console.log(masComoAssim()); //imprime undefined
 ```
 
 O undefined significa "indefinido" ou seja, o que você está tentando imprimir não foi definido.
