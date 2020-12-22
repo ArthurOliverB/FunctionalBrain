@@ -2,21 +2,20 @@
 
 # Indice
 
-- [Indice](#indice)
-	- [Cidadão de Primeira Linha](#cidadão-de-primeira-linha)
-	- [Parâmetro e Retorno São Opcionais](#parâmetro-e-retorno-são-opcionais)
-	- [Parâmetros Variáveis](#parâmetros-variáveis)
-	- [Parâmetro Padrão](#parâmetro-padrão)
-	- ["this" pode variar](#this-pode-variar)
-	- [this e a função bind #01](#this-e-a-função-bind-01)
-	- [this e a função bind #02](#this-e-a-função-bind-02)
-	- [Funções Arrow #01](#funções-arrow-01)
-	- [Funções Arrow #02](#funções-arrow-02)
-	- [Funções Arrow #03](#funções-arrow-03)
-	- [Funções Anônimas](#funções-anônimas)
-	- [Funções Callback #01](#funções-callback-01)
-	- [Funções Callback #02](#funções-callback-02)
-	- [Função Callback #03](#função-callback-03)
+- [Cidadão de Primeira Linha](#cidadão-de-primeira-linha)
+- [Parâmetro e Retorno São Opcionais](#parâmetro-e-retorno-são-opcionais)
+- [Parâmetros Variáveis](#parâmetros-variáveis)
+- [Parâmetro Padrão](#parâmetro-padrão)
+- ["this" pode variar](#this-pode-variar)
+- [this e a função bind #01](#this-e-a-função-bind-01)
+- [this e a função bind #02](#this-e-a-função-bind-02)
+- [Funções Arrow #01](#funções-arrow-01)
+- [Funções Arrow #02](#funções-arrow-02)
+- [Funções Arrow #03](#funções-arrow-03)
+- [Funções Anônimas](#funções-anônimas)
+- [Funções Callback #01](#funções-callback-01)
+- [Funções Callback #02](#funções-callback-02)
+- [Função Callback #03](#função-callback-03)
 
 ## Cidadão de Primeira Linha
 
